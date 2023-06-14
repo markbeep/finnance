@@ -8,7 +8,7 @@ import { FilterableChanges } from "../../components/account/ChangePills";
 import useAmount from "../../hooks/useAmount";
 import { useAccount } from "../../types/Account";
 import NotFound from "../404";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function AccountPage() {
     const theme = useMantineTheme();

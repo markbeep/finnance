@@ -8,6 +8,8 @@ from flask_login import current_user, login_required, login_user, logout_user
 
 from finnance import bcrypt, db
 
+import logging
+
 auth = Blueprint('auth', __name__, url_prefix='/api/auth')
 
 
@@ -49,7 +51,7 @@ def exists_mail(email: str):
     "type": "object",
     "properties": {
         "username": {"type": "string"},
-        "password": {"type": "string"}
+        "password": {"type": "string"},
     },
     "required": ["username", "password"]
 })

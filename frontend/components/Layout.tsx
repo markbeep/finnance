@@ -11,7 +11,7 @@ import useIsPhone from '../hooks/useIsPhone';
 import { useCurrentUser } from '../actions/query';
 import { useAccounts } from '../types/Account';
 import { ReactNode, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { usePathname, useRouter } from 'next/navigation';
 
 export const PublicLayout = ({ children }: { children: ReactNode }) =>
     <AppShell header={<PublicHeader />} padding='lg'>
@@ -24,10 +24,10 @@ export const PublicLayout = ({ children }: { children: ReactNode }) =>
 export const AuthLayout = ({ children }: { children: ReactNode }) => {
     useAuthSpotlight();
 
-    const router = useRouter();
+    const pathname = usePathname();
     const [open, { toggle, close }] = useDisclosure(false);
 
-    useEffect(() => close(), [router.pathname, close]);
+    useEffect(() => close(), [pathname, close]);
 
     return <AppShell
         header={<AuthHeader {...{ open, toggle }} />}
@@ -87,6 +87,7 @@ interface MyNavLinkProps extends NavLinkProps {
 const NavbarLink = ({ to, links, ...others }: MyNavLinkProps) => {
     const theme = useMantineTheme();
     const router = useRouter();
+    const pathname = usePathname();
 
     return <NavLink my='xs'
         onClick={() => {
@@ -96,7 +97,7 @@ const NavbarLink = ({ to, links, ...others }: MyNavLinkProps) => {
         }}
         style={{ borderRadius: theme.fn.radius() }}
         active={
-            router.pathname === to
+            pathname === to
             // (to !== undefined && location.startsWith(to) && location.charAt(to.length) === "/")
         }
         {...others}

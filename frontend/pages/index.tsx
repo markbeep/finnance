@@ -9,7 +9,7 @@ import { usePrefetch } from "../actions/query";
 import { useCurrencies } from "../types/Currency";
 import { useSmallerThan } from "../hooks/useSmallerthan";
 import { NivoShell } from "../nivo/Nivo";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function DashboardPage() {
     const theme = useMantineTheme();

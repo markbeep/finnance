@@ -1,9 +1,9 @@
 import { Button, Card, Flex, FocusTrap, PasswordInput, TextInput, Title } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { useState } from "react";
-import FinnanceLogo from "../FinnanceLogo";
-import { LoginFormProps, useLoginFormStyles } from "./LoginForm";
-import { emailExists, useRegister, usernameExists } from "./api";
+import FinnanceLogo from "../../components/FinnanceLogo";
+import { useLoginFormStyles } from "../../components/auth/LoginForm";
+import { emailExists, useRegister, usernameExists } from "../../components/auth/api";
 import { handleAxiosError } from "../../actions/query";
 import { useRouter } from "next/navigation";
 
@@ -14,7 +14,7 @@ interface SignUpInputType {
     passwordCheck: string
 }
 
-export function SignUpForm({ ...others }: LoginFormProps) {
+export default function SignUpForm() {
     const { classes } = useLoginFormStyles();
 
     const form = useForm<SignUpInputType>({
@@ -64,7 +64,6 @@ export function SignUpForm({ ...others }: LoginFormProps) {
         className={classes.LoginCard}
         withBorder
         shadow='sm'
-        {...others}
     >
         <Flex justify="center" align="center" direction="column">
             <FinnanceLogo size={40} />

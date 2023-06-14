@@ -6,8 +6,8 @@ import { ReactNode, useState } from "react";
 import { TbChevronDown } from "react-icons/tb";
 import Link from "next/link";
 import { handleAxiosError } from "../../actions/query";
-import FinnanceLogo from "../FinnanceLogo";
-import { useLogin, usernameExists } from "./api";
+import FinnanceLogo from "../../components/FinnanceLogo";
+import { useLogin, usernameExists } from "../../components/auth/api";
 import { useRouter } from "next/navigation";
 
 interface UsernameInputType {
@@ -62,7 +62,7 @@ export const useLoginFormStyles = createStyles(theme => ({
     }
 }))
 
-export function LoginForm({ ...others }: LoginFormProps) {
+export default function LoginForm() {
     const { classes } = useLoginFormStyles();
 
     const unForm = useForm<UsernameInputType>({
@@ -128,7 +128,6 @@ export function LoginForm({ ...others }: LoginFormProps) {
         className={classes.LoginCard}
         withBorder
         shadow='sm'
-        {...others}
     >
         <Flex justify="center" align="center" direction="column">
             <FinnanceLogo size={40} />

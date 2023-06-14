@@ -7,7 +7,7 @@ import { useAuth } from "../components/auth/api";
 import { useAccounts } from "../types/Account";
 import { useTemplates } from "../types/Template";
 import { addTransactionAction, addTransferAction } from "./actions";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export const FinnanceSpotlight = ({ children }: { children: ReactNode }) => {
     const theme = useMantineTheme();
